@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPC HRD아카이브 사전안내</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & Babel CDN -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script> 
+<script type="text/javascript"> 
+if (!wcs_add) var wcs_add={};
+wcs_add["wa"] = "s_305d5c9d9366";
+if (!_nasa) var _nasa={};
+if(window.wcs){
+wcs.inflow();
+wcs_do();
+}
+</script>
+    <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; background-color: #f1f5f9; }
+        .animate-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .kpc-logo-pulse { animation: kpcPulse 2.5s infinite ease-in-out; }
+        @keyframes kpcPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(0.98); }
+        }
+        
+        /* 세련된 KPC 문자 로고 스타일 */
+        .kpc-text-logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #E51837;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            text-shadow: 0 10px 15px rgba(229, 24, 55, 0.1);
+        }
+
+        .loading-bar-inner { animation: loadingSlide 1.5s infinite ease-in-out; }
+        @keyframes loadingSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .whitespace-pre-line { white-space: pre-line; }
+        .aspect-video { aspect-ratio: 16 / 9; }
+        input::placeholder { color: #cbd5e1; font-weight: 400; }
+        .switch-dot { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .brochure-card { perspective: 1000px; cursor: pointer; }
+        .brochure-inner { 
+            transition: transform 0.6s; 
+            transform-style: preserve-3d;
+            background-color: #E51837;
+        }
+        .brochure-card:hover .brochure-inner { transform: rotateY(-10deg) translateY(-10px); }
+
+        /* --- HRD 컴포넌트 전용 스타일 --- */
+        .hrd-banner-wrapper {
+            font-family: 'Noto Sans KR', sans-serif;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 600px;
+            margin: 40px 0;
+            text-align: left;
+            line-height: 1.3;
+            color: #333333;
+        }
+
+        .hrd-banner-wrapper h1, 
+        .hrd-banner-wrapper h2, 
+        .hrd-banner-wrapper p {
+            margin: 0;
+            padding: 0;
+            border: none;
+            letter-spacing: -0.05em;
+        }
+
+        .hrd-banner-wrapper .hrd-red {
+            color: #E63548;
+        }
+
+        .hrd-banner-wrapper .hrd-top-text {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .hrd-banner-wrapper .hrd-kpc-logo {
+            color: #E63548;
+            font-weight: 900;
+        }
+
+        .hrd-banner-wrapper .hrd-deco-bottom {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hrd-banner-wrapper .hrd-main-title {
+            font-size: 64px;
+            font-weight: 900;
+            color: #E63548;
+            line-height: 1.1;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .hrd-banner-wrapper .hrd-main-title {
+                font-size: 42px;
+            }
+        }
+
+        .hrd-banner-wrapper .hrd-deco-top {
+            position: relative;
+            display: inline-block;
+        }
+        .hrd-banner-wrapper .hrd-deco-top::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -4px;
+            width: 50%;
+            height: 4px;
+            background-color: #E63548;
+        }
+
+        .hrd-sub-banner-wrapper {
+            text-align: center;
+            line-height: 1.2;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .hrd-line-1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .hrd-line-2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        .hrd-sub-banner-wrapper .text-normal {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .logo-netflix {
+            font-size: 32px;
+            font-weight: 900;
+            color: #E50914;
+            letter-spacing: -1px;
+        }
+
+        .logo-youtube {
+            font-size: 28px;
+            font-weight: 700;
+            color: #282828;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .yt-icon {
+            background-color: #FF0000;
+            color: white;
+            border-radius: 6px;
+            padding: 0 8px;
+            font-size: 18px;
+        }
+
+        .logo-kpc {
+            font-size: 30px;
+            font-weight: 900;
+            color: #E63548;
+            position: relative;
+        }
+
+        .text-highlight {
+            font-size: 24px;
+            font-weight: 800;
+            color: #E63548;
+        }
+
+        @media (max-width: 600px) {
+            .hrd-sub-banner-wrapper .text-normal { font-size: 16px; }
+            .logo-netflix { font-size: 24px; }
+            .logo-youtube { font-size: 20px; }
+            .logo-kpc { font-size: 22px; }
+            .text-highlight { font-size: 18px; }
+        }
+    </style>
+</head>
+<body class="text-slate-900 leading-normal font-sans text-left">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useCallback } = React;
+        
+        // 아이콘 컴포넌트
+        const SvgIcon = ({ name, size = 24, className = "" }) => {
+            const icons = {
+                search: (
+                    <React.Fragment>
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.3-4.3"/>
+                    </React.Fragment>
+                ),
+                info: (
+                    <React.Fragment>
+                        <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </React.Fragment>
+                ),
+                chevronRight: <path d="m9 18 6-6-6-6"/>,
+                users: (
+                    <React.Fragment>
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    </React.Fragment>
+                ),
+                target: (
+                    <React.Fragment>
+                        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                    </React.Fragment>
+                ),
+                x: (
+                    <React.Fragment>
+                        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                    </React.Fragment>
+                ),
+                clock: (
+                    <React.Fragment>
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </React.Fragment>
+                ),
+                calculator: (
+                    <React.Fragment>
+                        <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/>
+                    </React.Fragment>
+                ),
+                layout: (
+                    <React.Fragment>
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+                    </React.Fragment>
+                ),
+                cart: (
+                    <React.Fragment>
+                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </React.Fragment>
+                ),
+                check: <polyline points="20 6 9 17 4 12"/>,
+                bookOpen: (
+                    <React.Fragment>
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </React.Fragment>
+                ),
+                trash: (
+                    <React.Fragment>
+                        <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+                    </React.Fragment>
+                ),
+                building: (
+                    <React.Fragment>
+                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="2"/><line x1="15" y1="22" x2="15" y2="2"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="4" y1="14" x2="20" y2="14"/><line x1="4" y1="18" x2="20" y2="18"/>
+                    </React.Fragment>
+                ),
+                externalLink: (
+                    <React.Fragment>
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                    </React.Fragment>
+                ),
+                list: (
+                    <React.Fragment>
+                        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+                    </React.Fragment>
+                ),
+                play: (
+                    <React.Fragment>
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </React.Fragment>
+                ),
+                mail: (
+                    <React.Fragment>
+                        <rect x="3" y="5" width="18" height="14" rx="2"/>
+                        <path d="m3 7 9 6 9-6"/>
+                    </React.Fragment>
+                ),
+                lock: (
+                    <React.Fragment>
+                        <rect x="5" y="10" width="14" height="11" rx="2"/>
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                    </React.Fragment>
+                ),
+                plus: (
+                    <React.Fragment>
+                        <path d="M12 5v14"/><path d="M5 12h14"/>
+                    </React.Fragment>
+                ),
+                refresh: (
+                    <React.Fragment>
+                        <path d="M20 11a8.1 8.1 0 0 0-15.5-2"/><path d="M4 5v4h4"/>
+                        <path d="M4 13a8.1 8.1 0 0 0 15.5 2"/><path d="M20 19v-4h-4"/>
+                    </React.Fragment>
+                )
+            }
+            };
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                    {icons[name] || null}
+                </svg>
+            );
+        };
+
+        const SHEET_ID = "1Qm1fFT7X9WYre57t-layLcbslzk2acIb8XOtiEbpOfg";
+        const SHEET1_GID = "0"; 
+        const SHEET2_GID = "210774815"; 
+        const CSV_URL_S1 = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET1_GID}`;
+        const CSV_URL_S2 = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET2_GID}`;
+
+        const COMMON_COMPETENCY = ["문제해결·의사결정", "보고력", "북러닝", "비즈니스매너", "업무혁신", "외국어", "자기관리", "커뮤니케이션"];
+        const LEADERSHIP_COMPETENCY = ["갈등관리", "관리자", "리더십일반", "팀워크", "팔로워"];
+        const JOB_COMPETENCY = ["경영기획·ESG", "구매·자재", "데이터사이언스(DS)", "디지털전환(DX)", "마케팅·영업·CS", "부동산", "생산·품질", "유통·물류·무역", "인사·총무", "자격증", "재무·회계·원가", "프로젝트관리", "AI활용", "OA활용", "R&D/ISO경영", "경영"];
+        const ALL_CATEGORIES = [...COMMON_COMPETENCY, ...LEADERSHIP_COMPETENCY, ...JOB_COMPETENCY];
+
+        function App() {
+            const [activeTab, setActiveTab] = useState('intro'); 
+            const [step, setStep] = useState('loading');
+            const [coursesMerged, setCoursesMerged] = useState([]); 
+            const [searchInput, setSearchInput] = useState("");
+            const [triggeredQuery, setTriggeredQuery] = useState("");
+            const [selectedCategories, setSelectedCategories] = useState(ALL_CATEGORIES);
+            const [selectedCourseDetail, setSelectedCourseDetail] = useState(null);
+            const [cart, setCart] = useState([]);
+            const [calcEnterpriseType, setCalcEnterpriseType] = useState('preferred');
+            const [calcParticipants, setCalcParticipants] = useState(1);
+
+            // --- 뉴스레터/Notion 관리 ---
+            // 주의: 정적 HTML에서 PIN은 실제 보안 수단이 아닙니다.
+            // 운영 단계에서는 서버 인증 또는 Supabase/Firebase Auth로 교체하는 것을 권장합니다.
+            const ADMIN_PIN = "2026";
+            const NEWSLETTER_STORAGE_KEY = "kpc_hrd_newsletters_v1";
+            const [newsletterPosts, setNewsletterPosts] = useState([]);
+            const [isAdmin, setIsAdmin] = useState(false);
+            const [adminPin, setAdminPin] = useState("");
+            const [showAdminLogin, setShowAdminLogin] = useState(false);
+            const [showNewsletterForm, setShowNewsletterForm] = useState(false);
+            const [newNewsletterTitle, setNewNewsletterTitle] = useState("");
+            const [newNewsletterUrl, setNewNewsletterUrl] = useState("");
+            const [newsletterEmbedUrl, setNewsletterEmbedUrl] = useState("");
+
+            useEffect(() => {
+                try {
+                    const saved = JSON.parse(localStorage.getItem(NEWSLETTER_STORAGE_KEY) || "[]");
+                    if (Array.isArray(saved)) setNewsletterPosts(saved);
+                } catch (e) {
+                    console.warn("뉴스레터 저장 데이터 불러오기 실패", e);
+                }
+            }, []);
+
+            const saveNewsletterPosts = (posts) => {
+                setNewsletterPosts(posts);
+                localStorage.setItem(NEWSLETTER_STORAGE_KEY, JSON.stringify(posts));
+            };
+
+            const handleAdminLogin = () => {
+                if (adminPin === ADMIN_PIN) {
+                    setIsAdmin(true);
+                    setShowAdminLogin(false);
+                    setAdminPin("");
+                } else {
+                    alert("관리자 PIN이 올바르지 않습니다.");
+                }
+            };
+
+            const normalizeNotionUrl = (url) => {
+                const value = url.trim();
+                if (!value) return "";
+                // Notion 공개 페이지 링크를 그대로 iframe src로 사용합니다.
+                // https://www.notion.so/... / https://<workspace>.notion.site/... 모두 허용
+                try {
+                    const parsed = new URL(value);
+                    const host = parsed.hostname.toLowerCase();
+                    if (!(host === "notion.so" || host === "www.notion.so" || host.endsWith(".notion.site"))) {
+                        return "";
+                    }
+                    return parsed.toString();
+                } catch (e) {
+                    return "";
+                }
+            };
+
+            const addNewsletterPost = () => {
+                const title = newNewsletterTitle.trim();
+                const url = normalizeNotionUrl(newNewsletterUrl);
+                if (!title) return alert("뉴스레터 제목을 입력해 주세요.");
+                if (!url) return alert("공개된 Notion 페이지 URL을 입력해 주세요. (notion.so / notion.site)");
+
+                const post = {
+                    id: `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+                    title,
+                    url,
+                    createdAt: new Date().toISOString()
+                };
+                saveNewsletterPosts([post, ...newsletterPosts]);
+                setNewsletterEmbedUrl(url);
+                setNewNewsletterTitle("");
+                setNewNewsletterUrl("");
+                setShowNewsletterForm(false);
+            };
+
+            const deleteNewsletterPost = (id) => {
+                if (!confirm("이 뉴스레터를 목록에서 삭제할까요?")) return;
+                const next = newsletterPosts.filter(post => post.id !== id);
+                saveNewsletterPosts(next);
+                if (newsletterEmbedUrl && !next.some(post => post.url === newsletterEmbedUrl)) {
+                    setNewsletterEmbedUrl(next[0]?.url || "");
+                }
+            };
+
+            const openNewsletterPost = (post) => {
+                setNewsletterEmbedUrl(post.url);
+            };
+
+            const cleanStr = (val) => val ? val.replace(/^["']|["']$/g, '').replace(/\\n/g, '\n').trim() : "";
+            const parseCSV = (data) => data.split(/\r?\n(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(row => row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/));
+            // 문자열에서 특수문자와 공백을 제거하여 비교하는 헬퍼 함수
+            const normalize = (str) => str ? str.toLowerCase().replace(/[^a-z0-9가-힣]/g, '') : '';
+
+            useEffect(() => {
+                const loadData = async () => {
+                    try {
+                        const [res1, res2] = await Promise.all([
+                            fetch(CSV_URL_S1).then(r => r.text()),
+                            fetch(CSV_URL_S2).then(r => r.text())
+                        ]);
+                        const rowsS1Data = parseCSV(res1);
+                        const rowsS2Data = parseCSV(res2);
+                        const detailsMap = {};
+                        
+                        rowsS1Data.slice(2).forEach(row => {
+                            const title = cleanStr(row[0]);
+                            if (title) {
+                                detailsMap[title] = {
+                                    title, intro: cleanStr(row[1]), target: cleanStr(row[2]),
+                                    goal: cleanStr(row[3]), content: cleanStr(row[4]), category: cleanStr(row[5]),
+                                    sessions: cleanStr(row[6]), hours: parseFloat(cleanStr(row[7])) || 0,
+                                    sampleLink: cleanStr(row[13])
+                                };
+                            }
+                        });
+                        
+                        const merged = rowsS2Data.slice(2).filter(row => row.length >= 2 && row[1]).map(row => {
+                            const title = cleanStr(row[1]);
+                            return { 
+                                ...detailsMap[title], 
+                                title, 
+                                summaryIntro: cleanStr(row[2]), 
+                                summaryTarget: cleanStr(row[3]), 
+                                summaryGoal: cleanStr(row[4]), 
+                                summaryCategory: cleanStr(row[5]) || "일반", 
+                                thumbnail: cleanStr(row[6]) 
+                            };
+                        });
+                        setTimeout(() => { setCoursesMerged(merged); setStep('ready'); }, 1200);
+                    } catch (e) { setStep('error'); }
+                };
+                loadData();
+            }, []);
+
+            const addToCart = (course) => { if (!cart.find(c => c.title === course.title)) setCart([...cart, course]); };
+            const removeFromCart = (title) => setCart(cart.filter(c => c.title !== title));
+            const clearCart = () => setCart([]);
+            const handleSearch = () => setTriggeredQuery(searchInput);
+            const isAllSelected = selectedCategories.length === ALL_CATEGORIES.length;
+            const toggleAll = () => isAllSelected ? setSelectedCategories([]) : setSelectedCategories(ALL_CATEGORIES);
+            const toggleCategory = (cat) => selectedCategories.includes(cat) ? setSelectedCategories(selectedCategories.filter(c => c !== cat)) : setSelectedCategories([...selectedCategories, cat]);
+
+            const searchResult = useMemo(() => {
+                const q = normalize(triggeredQuery);
+                const normSelectedCats = selectedCategories.map(normalize);
+
+                const scoredList = coursesMerged.map(c => {
+                    let matchScore = 0;
+                    const nTitle = normalize(c.title);
+                    const nIntro = normalize(c.intro);
+                    const nSummaryIntro = normalize(c.summaryIntro);
+                    const nCategory = normalize(c.summaryCategory);
+
+                    if (q) {
+                        if (nTitle.includes(q)) matchScore += 10000;
+                        if (nCategory.includes(q)) matchScore += 5000;
+                        if (nIntro.includes(q) || nSummaryIntro.includes(q)) matchScore += 1000;
+                    }
+
+                    // 카테고리 필터링 점수 부여
+                    if (normSelectedCats.includes(nCategory)) matchScore += 100;
+                    
+                    return { ...c, matchScore, normalizedCategory: nCategory };
+                });
+                
+                // 필터링: 선택된 카테고리에 포함되면서 검색어 점수가 있는 것 (검색어가 없을 땐 전체 노출)
+                const filteredMatches = scoredList.filter(c => {
+                    const isCatMatched = normSelectedCats.includes(c.normalizedCategory);
+                    const isKeyMatched = q === "" || c.matchScore >= 1000;
+                    return isCatMatched && isKeyMatched;
+                }).sort((a, b) => b.matchScore - a.matchScore);
+
+                const groupedStrict = [];
+                const categoryOrder = [];
+                filteredMatches.forEach(item => { if (!categoryOrder.includes(item.summaryCategory)) categoryOrder.push(item.summaryCategory); });
+                
+                categoryOrder.forEach(catName => {
+                    const items = filteredMatches.filter(c => c.summaryCategory === catName);
+                    groupedStrict.push({ category: catName, items });
+                });
+
+                return { groupedStrict, totalCount: filteredMatches.length };
+            }, [triggeredQuery, selectedCategories, coursesMerged]);
+
+            const totalCartHours = cart.reduce((sum, c) => sum + (c.hours || 0), 0);
+            const targetHours = 15;
+            const hourProgress = Math.min(100, (totalCartHours / targetHours) * 100);
+            const isCompleted = totalCartHours >= targetHours;
+
+            const getCategoryActiveStyle = (cat) => {
+                if (COMMON_COMPETENCY.includes(cat)) return "bg-emerald-600 text-white border-emerald-600 shadow-emerald-100";
+                if (LEADERSHIP_COMPETENCY.includes(cat)) return "bg-blue-600 text-white border-blue-600 shadow-blue-100";
+                if (JOB_COMPETENCY.includes(cat)) return "bg-red-600 text-white border-red-600 shadow-red-100";
+                return "bg-slate-800 text-white border-slate-800";
+            };
+
+            const getCategoryStyle = (cat) => {
+                if (COMMON_COMPETENCY.includes(cat)) return "bg-emerald-50 text-emerald-600 border-emerald-100";
+                if (LEADERSHIP_COMPETENCY.includes(cat)) return "bg-blue-50 text-blue-600 border-blue-100";
+                if (JOB_COMPETENCY.includes(cat)) return "bg-red-50 text-red-600 border-red-100";
+                return "bg-slate-50 text-slate-500 border-slate-100";
+            };
+
+            if (step === 'loading') return (
+                <div className="min-h-screen flex flex-col items-center justify-center bg-white font-sans text-center px-6">
+                    <div className="relative mb-8 kpc-logo-pulse">
+                        <h1 className="kpc-text-logo select-none">KPC</h1>
+                    </div>
+                    <div className="space-y-4 w-full max-w-xs">
+                        <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden relative shadow-inner text-left">
+                            <div className="absolute top-0 left-0 h-full w-24 bg-[#E51837] rounded-full loading-bar-inner"></div>
+                        </div>
+                    </div>
+                </div>
+            );
+
+            return (
+                <div className="min-h-screen pb-12 bg-slate-50 font-sans">
+                    <div className="w-full flex justify-center items-center pt-6 pb-0"> 
+                        <div onClick={() => setActiveTab('intro')} className="cursor-pointer hover:opacity-70 transition-all active:scale-95" title="사업 소개로 이동">
+                            <img src="https://lh3.googleusercontent.com/d/1o5JcBhnleA3kyVZlWDtSxeOEOAlB9x01" alt="KPC 한국생산성본부" className="h-10 md:h-12 w-auto object-contain mix-blend-multiply" 
+                                onError={(e) => { e.target.style.display = 'none'; if (!e.target.parentNode.querySelector('.fallback-text')) { const fallback = document.createElement('h1'); fallback.className = "fallback-text text-[#E51837] font-black text-2xl tracking-tighter opacity-80"; fallback.innerText = "kpc 한국생산성본부"; e.target.parentNode.appendChild(fallback); } }}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="max-w-4xl mx-auto mt-2 md:mt-3 bg-white md:rounded-[2.5rem] shadow-xl overflow-hidden border border-slate-200 flex flex-col animate-in">
+                        <div className="flex border-b border-slate-100 bg-slate-50/80 sticky top-0 z-50 backdrop-blur-sm">
+                            {[
+                                {id: 'intro', label: '사업 소개', icon: 'info'},
+                                {id: 'search', label: '과정 검색', icon: 'search'},
+                                {id: 'cart', label: '교육 기획', icon: 'layout'},
+                                {id: 'calculator', label: '견적 계산', icon: 'calculator'},
+                                {id: 'newsletter', label: '뉴스레터', icon: 'mail'}
+                            ].map(tab => (
+                                <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex-1 min-w-0 py-4 font-bold text-[12px] md:text-[13px] flex flex-col items-center gap-1 transition-all relative ${activeTab === tab.id ? 'text-[#E51837] bg-white border-b-2 border-[#E51837]' : 'text-slate-400 hover:bg-slate-100'}`}>
+                                    <div className="relative">
+                                        <SvgIcon name={tab.icon} size={18} />
+                                        {tab.id === 'cart' && cart.length > 0 && (<span className="absolute -top-1 -right-2.5 bg-[#E51837] text-white text-[9px] min-w-[14px] h-[14px] rounded-full flex items-center justify-center px-1 font-black animate-in zoom-in">{cart.length}</span>)}
+                                    </div>
+                                    {tab.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        {activeTab === 'intro' && (
+                            <div className="animate-in p-8 md:p-16 flex flex-col items-center text-center text-sm">
+                                <div className="hrd-banner-wrapper">
+                                    <p className="hrd-top-text">
+                                        <span className="hrd-deco-bottom">**연</span>{" "} 
+                                        <span className="hrd-red">1.4만원</span>으로 누리는{" "}
+                                        <span className="hrd-kpc-logo">kpc</span> 교육의 모든 것
+                                    </p>
+                                    <h1 className="hrd-main-title">
+                                        <span className="hrd-deco-top">HRD</span> 아카<span className="hrd-deco-bottom-thick">이브</span>
+                                    </h1>
+                                </div>
+                                <div className="hrd-sub-banner-wrapper">
+                                    <div className="hrd-line-1"><span className="logo-netflix">NETFLIX</span><span className="text-normal"> 처럼 간단하고,</span><span className="logo-youtube"><span className="yt-icon">▶</span> YouTube</span><span className="text-normal"> 처럼 편리하게</span></div>
+                                    <div className="hrd-line-2"><span className="text-normal">국내 최고 교육훈련 전문기관 </span><span className="logo-kpc">kpc</span><span className="text-normal">의 정수를 </span><span className="text-highlight">무제한</span><span className="text-normal"> 제공해 드립니다.</span></div>
+                                </div>
+                                {/* --- 브로슈어 카드 영역 2개 분할 개편 --- */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mb-14">
+                                    {/* 왼쪽: HRD아카이브 소개서 (기존 레드) */}
+                                    <div className="brochure-card group" onClick={() => window.open('https://ebook.kpc.or.kr/Viewer/2026hrdarchive_intro', '_blank')}>
+                                        <div className="brochure-inner rounded-[2rem] p-8 aspect-[3/4] shadow-2xl relative overflow-hidden flex flex-col justify-between border-4 border-white/20 text-white text-left bg-[#E51837]">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl rounded-full translate-x-10 -translate-y-10"></div>
+                                            <div className="space-y-4">
+                                                <div className="w-12 h-1 bg-white/40 rounded-full"></div>
+                                                <h2 className="text-2xl font-black leading-tight tracking-tight text-white font-sans">HRD아카이브<br/>소개서</h2>
+                                            </div>
+                                            <div className="space-y-6">
+                                                <p className="text-white text-[11px] md:text-xs italic border-l-2 border-white/30 pl-4 leading-relaxed font-bold">KPC HRD아카이브란?<br/></p>
+                                                <div className="flex items-center gap-3"><div className="p-2.5 bg-white/20 rounded-xl backdrop-blur-md"><SvgIcon name="bookOpen" size={20} className="text-white" /></div><span className="font-black text-xs uppercase text-white">열람하기</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 오른쪽: HRD브로슈어 바로가기 (블루 테마) */}
+                                    <div className="brochure-card group" onClick={() => window.open('https://ebook.kpc.or.kr/Viewer/2026kpc_hrdarchive', '_blank')}>
+                                        <div className="brochure-inner rounded-[2rem] p-8 aspect-[3/4] shadow-2xl relative overflow-hidden flex flex-col justify-between border-4 border-white/20 text-white text-left bg-blue-600">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl rounded-full translate-x-10 -translate-y-10"></div>
+                                            <div className="space-y-4">
+                                                <div className="w-12 h-1 bg-white/40 rounded-full"></div>
+                                                <h2 className="text-2xl font-black leading-tight tracking-tight text-white uppercase font-sans">KPC 2026<br/>HRD Brochure</h2>
+                                            </div>
+                                            <div className="space-y-6">
+                                                <p className="text-white text-[11px] md:text-xs italic border-l-2 border-white/30 pl-4 leading-relaxed font-bold">KPC HRD 아카이브<br/>사업 안내 한눈에 보기</p>
+                                                <div className="flex items-center gap-3"><div className="p-2.5 bg-white/20 rounded-xl backdrop-blur-md"><SvgIcon name="layout" size={20} className="text-white" /></div><span className="font-black text-xs uppercase animate-pulse text-white">바로가기</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col md:flex-row items-center gap-4">
+                                    <button onClick={() => setActiveTab('search')} className="px-10 py-5 bg-slate-900 text-white rounded-[2rem] font-black text-xl hover:bg-slate-800 active:scale-95 shadow-lg flex items-center gap-3 transition-all font-sans">
+                                        교육과정 찾기 <SvgIcon name="chevronRight" size={20} />
+                                    </button>
+                                    <a href="https://onkpc.or.kr/e-kpc/front/course/group_apply_archive.jsp?pInquiryType=01" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-[#E51837] text-white rounded-[2rem] font-black text-xl hover:bg-[#c41530] active:scale-95 shadow-xl flex items-center gap-3 transition-all font-sans text-center">
+                                        교육 신청하기 <SvgIcon name="externalLink" size={20} />
+                                    </a>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'search' && (
+                            <div className="animate-in p-6 md:p-10 min-h-[800px]">
+                                <div className="mb-8 max-w-2xl mx-auto text-slate-400 text-left">
+                                    <div className="relative group mb-8">
+                                        <div className="flex justify-end items-center mb-2 px-1">
+                                            <div className="flex items-center gap-2 group cursor-pointer" onClick={toggleAll}>
+                                                <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest transition-colors group-hover:text-blue-600">전체 선택</span>
+                                                <button className={`w-10 h-5 rounded-full relative transition-all duration-300 ${isAllSelected ? 'bg-blue-600 shadow-md' : 'bg-slate-200'}`}>
+                                                    <div className={`switch-dot absolute top-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-all duration-300 ${isAllSelected ? 'left-[22px]' : 'left-0.5'}`}></div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="relative text-slate-900 text-left">
+                                            <input type="text" placeholder="과정명 또는 카테고리를 입력하세요 (띄어쓰기 없이도 가능)" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSearch()} className="w-full pl-12 pr-14 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white text-base font-bold shadow-sm transition-all" />
+                                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"><SvgIcon name="search" size={20} /></div>
+                                            <button onClick={handleSearch} className="absolute right-1.5 top-1/2 -translate-y-1/2 w-11 h-11 bg-slate-900 text-white rounded-xl flex items-center justify-center hover:bg-blue-600 active:scale-90 transition-all shadow-md font-sans"><SvgIcon name="search" size={18} /></button>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 gap-4 bg-slate-50/50 p-6 rounded-3xl border border-slate-100">
+                                        {[
+                                            {label: '공통역량', color: 'emerald', list: COMMON_COMPETENCY},
+                                            {label: '리더십', color: 'blue', list: LEADERSHIP_COMPETENCY},
+                                            {label: '직무역량', color: 'red', list: JOB_COMPETENCY}
+                                        ].map(group => (
+                                            <div key={group.label} className="text-left">
+                                                <h5 className={`text-[10px] font-black text-${group.color === 'red' ? '[#E51837]' : group.color + '-600'} mb-2 uppercase flex items-center gap-1.5`}>
+                                                    <div className={`w-1 h-3 bg-${group.color === 'red' ? '[#E51837]' : group.color + '-500'} rounded-full`}></div> {group.label}
+                                                </h5>
+                                                <div className="flex flex-wrap gap-1.5 text-left">
+                                                    {group.list.map(cat => (
+                                                        <button key={cat} onClick={() => toggleCategory(cat)} className={`px-2.5 py-1.5 rounded-lg border font-bold text-[10px] transition-all ${selectedCategories.includes(cat) ? getCategoryActiveStyle(cat) : 'bg-white border-slate-100 text-slate-400 hover:border-slate-200'}`}>
+                                                            {cat}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="rounded-[1.5rem] overflow-hidden border border-slate-200 shadow-sm bg-white min-h-[400px] flex flex-col">
+                                    {searchResult.totalCount > 0 ? (
+                                        searchResult.groupedStrict.map((group, gIdx) => (
+                                            <div key={gIdx} className="border-b last:border-0 border-slate-100 text-left">
+                                                <div className="px-5 py-3 bg-slate-50/80 flex items-center gap-2 border-b border-slate-100 text-[12px] font-black text-slate-800 uppercase tracking-tight text-left">
+                                                    <div className={`w-1 h-3 rounded-full ${getCategoryActiveStyle(group.category).split(' ')[0]}`}></div>
+                                                    {group.category} <span className="ml-1 text-slate-400 font-bold">({group.items.length})</span>
+                                                </div>
+                                                {group.items.map((course, idx) => (
+                                                    <div key={idx} className="p-5 md:p-6 flex items-center justify-between gap-4 hover:bg-blue-50/10 transition-colors border-b last:border-0 border-slate-50 text-slate-800 text-left font-sans">
+                                                        <div onClick={() => setSelectedCourseDetail(course)} className="flex-1 flex flex-col md:flex-row md:items-center gap-4 cursor-pointer text-left font-sans font-medium">
+                                                            <div className="flex-1 text-left font-sans font-medium text-slate-800 leading-relaxed">
+                                                                <div className="flex items-center gap-2 mb-1 text-left font-sans">
+                                                                    <span className={`px-1.5 py-0.5 rounded text-[8px] font-black uppercase ${getCategoryStyle(course.summaryCategory)}`}>{course.summaryCategory}</span>
+                                                                    <h3 className="text-[15px] font-bold break-keep leading-snug group-hover:text-blue-600 font-sans">{course.title}</h3>
+                                                                    <span className="text-[10px] text-blue-600 font-black bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100 font-sans tracking-tighter">{(course.hours).toFixed(1)}H</span>
+                                                                </div>
+                                                                <p className="text-slate-400 text-[11px] line-clamp-1 italic">{course.summaryIntro}</p>
+                                                            </div>
+                                                        </div>
+                                                        <button onClick={() => addToCart(course)} disabled={cart.find(c => c.title === course.title)} className={`shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl text-[10px] font-black transition-all ${cart.find(c => c.title === course.title) ? 'bg-slate-50 text-slate-300' : 'bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-100 font-sans'}`}>
+                                                            <SvgIcon name={cart.find(c => c.title === course.title) ? 'check' : 'layout'} size={12}/> {cart.find(c => c.title === course.title) ? 'ADDED' : 'PLANNING'}
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="flex-1 flex flex-col items-center justify-center py-20 bg-slate-50/20 text-slate-400">
+                                            <SvgIcon name="search" size={48} className="mb-4 opacity-20" />
+                                            <p className="font-bold">검색 결과가 없습니다.</p>
+                                            <p className="text-xs mt-1">검색어나 카테고리 필터를 변경해 보세요.</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'cart' && (
+                            <div className="animate-in min-h-[700px]">
+                                <div className="px-6 py-4 bg-blue-50/50 border-b border-blue-100 text-left text-slate-700 font-sans font-medium">
+                                    <div className="max-w-3xl mx-auto flex items-start gap-3 text-left font-sans">
+                                        <div className="shrink-0 p-2 bg-red-600 rounded-lg text-white mt-1 shadow-sm font-sans"><SvgIcon name="info" size={16} /></div>
+                                        <div className="space-y-0.5 text-left font-sans">
+                                            <h4 className="text-[14px] font-black text-red-900 tracking-tight leading-snug">교육과정을 검색 및 추가하여 우리 기업에 맞는 교육과정 15시간을 기획해보세요.</h4>
+                                            <p className="text-[12px] font-bold text-red-700/70">15시간 달성시 아카이브 수료증과 과정별 수료증 발급이 가능합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={`p-6 border-b transition-all duration-500 ${isCompleted ? 'bg-[#E51837]' : 'bg-slate-900'}`}>
+                                    <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-white text-left font-sans">
+                                        <div className="flex-1 w-full space-y-2 text-left font-sans text-white">
+                                            <div className="flex items-baseline gap-2 font-sans font-black text-white"><span className="text-4xl text-white">{totalCartHours.toFixed(1)}</span><span className="text-sm opacity-50 font-bold uppercase tracking-widest font-sans">/ 15.0 Hours Planned</span></div>
+                                            <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden shadow-inner"><div className="h-full bg-white transition-all duration-700 ease-out shadow-lg" style={{ width: `${hourProgress}%` }}></div></div>
+                                        </div>
+                                        <div className="text-center md:text-right shrink-0 font-sans font-bold">
+                                            {isCompleted ? (
+                                                <div className="animate-in zoom-in bg-white/10 px-6 py-2 rounded-2xl border border-white/20 text-center text-white"><p className="text-sm font-black uppercase tracking-tight text-white">최적 교육 구성 완료!</p><p className="text-[10px] opacity-70 font-bold font-sans">15시간 교육 기획안이 완성되었습니다.</p></div>
+                                            ) : (
+                                                <div className="bg-white/5 px-6 py-2 rounded-2xl text-center text-white"><p className="text-sm font-black text-red-300 font-sans">{(targetHours - totalCartHours).toFixed(1)}시간 필요</p><p className="text-[10px] opacity-50 font-bold font-sans">목표 시간까지 과정을 더 담아보세요.</p></div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-6 md:p-10 max-w-3xl mx-auto font-sans font-medium">
+                                    <div className="flex justify-between items-center mb-6 px-1 text-slate-600 font-black text-[11px] uppercase tracking-widest font-sans font-black">
+                                        <p className="italic font-black">기획 리스트 ({cart.length})</p>
+                                        {cart.length > 0 && <button onClick={clearCart} className="hover:text-blue-600 flex items-center gap-1 transition-colors uppercase font-sans font-black font-black"><SvgIcon name="trash" size={12}/> Clear List</button>}
+                                    </div>
+                                    <div className="space-y-3 text-left">
+                                        {cart.map((course, idx) => (
+                                            <div key={idx} className="group bg-white border border-red-100 border-slate-100 p-4 md:p-5 rounded-2xl flex items-center justify-between gap-4 hover:border-red-300 transition-all shadow-sm font-sans text-slate-800">
+                                                <div className="flex-1 flex items-center gap-4 cursor-pointer text-left font-sans" onClick={() => setSelectedCourseDetail(course)}>
+                                                    <div className="w-8 h-8 bg-slate-50 text-slate-900 font-black rounded-lg flex items-center justify-center shrink-0 text-[10px] font-sans">{(idx + 1)}</div>
+                                                    <div className="flex-1">
+                                                        <h4 className="text-[14px] font-bold break-keep text-slate-800">{course.title}</h4>
+                                                        <div className="flex items-center gap-2 mt-0.5 text-[10px] text-slate-400 font-bold uppercase text-left tracking-tighter font-sans">
+                                                            <span className="text-blue-600 font-black">{(course.hours).toFixed(1)}H</span><span className="opacity-30 font-sans">•</span><span>{course.summaryCategory}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button onClick={() => removeFromCart(course.title)} className="p-2 text-slate-300 hover:text-blue-600 transition-colors"><SvgIcon name="trash" size={16}/></button>
+                                            </div>
+                                        ))}
+                                        {cart.length === 0 && (
+                                            <div className="py-20 bg-slate-50/50 rounded-3xl border-2 border-dashed border-slate-100 flex flex-col items-center gap-3 text-center">
+                                                <SvgIcon name="layout" size={32} className="text-slate-200 opacity-50 font-sans" />
+                                                <p className="text-slate-400 font-bold text-sm">기획 리스트가 비어 있습니다.</p>
+                                                <button onClick={() => setActiveTab('search')} className="mt-2 px-6 py-2.5 bg-red-600 text-white rounded-xl font-black text-xs shadow-md active:scale-95 transition-all">과정 추가하기</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'calculator' && (
+                            <div className="animate-in p-8 md:p-16 flex flex-col items-center text-center text-slate-900 font-sans font-medium">
+                                <div className="mb-10 text-center font-sans font-black"><h2 className="text-2xl font-black tracking-tight mb-3 font-sans font-black">교육비 견적 계산</h2><p className="text-slate-500 text-sm font-medium italic text-balance leading-relaxed font-sans font-medium">기업 규모와 인원수를 기반으로 예상 비용을 산출합니다.</p></div>
+                                <div className="w-full max-w-md space-y-8 text-left text-slate-600 font-sans font-black">
+                                    <div className="space-y-3 font-sans font-medium">
+                                        <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest text-left font-sans">
+                                            <p className="flex items-center gap-1.5 font-sans font-black uppercase text-slate-400"><SvgIcon name="building" size={12}/> 기업 유형</p>
+                                            <a href="https://ebook.kpc.or.kr/Viewer/2026hrdarchive_check" target="_blank" className="text-[#E51837] hover:underline flex items-center gap-1 font-sans">우선지원기업 확인하기 <SvgIcon name="externalLink" size={10}/></a>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3 text-center font-sans">
+                                            {['preferred', 'large'].map(type => (<button key={type} onClick={() => setCalcEnterpriseType(type)} className={`py-4 rounded-2xl border-2 transition-all font-black text-xs font-sans ${calcEnterpriseType === type ? 'bg-[#E51837] text-white border-[#E51837] shadow-lg shadow-red-100' : 'bg-white border-slate-100 text-slate-400 hover:border-slate-200 font-sans font-medium'}`}>{type === 'preferred' ? '우선지원대상' : '대규모 기업'}<br/><span className="opacity-60 font-sans mt-1 block tracking-tight font-sans">{(type === 'preferred' ? 14000 : 28000).toLocaleString()}원</span></button>))}
+                                        </div>
+                                    </div>
+                                    <div className="space-y-3 text-left font-sans text-sm font-black font-black"><p className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5 font-sans text-left font-black uppercase text-slate-400 font-black font-black"><SvgIcon name="users" size={12}/>수강인원 </p><div className="relative text-left font-sans font-black font-black"><input type="number" min="1" value={calcParticipants} onChange={(e) => setCalcParticipants(Math.max(1, parseInt(e.target.value) || 0))} className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white text-xl font-black text-center pr-12 shadow-inner text-slate-800 transition-all font-sans font-black font-black font-black font-black" /><span className="absolute right-6 top-1/2 -translate-y-1/2 font-black text-slate-300 text-sm uppercase">명</span></div></div>
+                                    <div className="bg-slate-900 rounded-[1.5rem] p-8 text-white shadow-xl relative overflow-hidden text-left font-sans font-black"><div className="relative z-10 flex flex-col gap-1 text-left font-sans font-black font-black uppercase"><p className="text-[10px] font-black text-[#E51837] uppercase tracking-[0.2em] mb-2 font-black">Total</p><h3 className="text-4xl font-black tracking-tighter font-sans text-left text-white font-black">{(calcParticipants * (calcEnterpriseType === 'preferred' ? 14000 : 28000)).toLocaleString()}<span className="text-xl ml-1 font-bold">원</span></h3><p className="text-[9px] text-white/30 font-bold uppercase mt-3 tracking-widest border-t border-white/5 pt-3 font-black">Includes VAT</p></div></div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+
+                        {activeTab === 'newsletter' && (
+                            <div className="animate-in min-h-[800px] bg-slate-50">
+                                <div className="px-6 md:px-10 py-8 bg-white border-b border-slate-100">
+                                    <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-5">
+                                        <div className="text-left">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-[#E51837] border border-red-100 text-[10px] font-black uppercase tracking-widest">
+                                                <SvgIcon name="mail" size={13} /> KPC Newsletter
+                                            </div>
+                                            <h2 className="mt-3 text-2xl md:text-3xl font-black tracking-tight text-slate-900">뉴스레터</h2>
+                                            <p className="mt-2 text-xs md:text-sm text-slate-500 font-medium">
+                                                Notion에서 작성한 뉴스레터를 이 페이지 안에서 바로 열람할 수 있습니다.
+                                            </p>
+                                        </div>
+
+                                        <div className="flex items-center gap-2">
+                                            {!isAdmin ? (
+                                                <button
+                                                    onClick={() => setShowAdminLogin(true)}
+                                                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-black hover:bg-slate-800 transition-all active:scale-95 shadow-sm"
+                                                >
+                                                    <SvgIcon name="lock" size={14} /> 관리자
+                                                </button>
+                                            ) : (
+                                                <>
+                                                    <button
+                                                        onClick={() => setShowNewsletterForm(v => !v)}
+                                                        className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#E51837] text-white rounded-xl text-xs font-black hover:bg-[#c41530] transition-all active:scale-95 shadow-sm"
+                                                    >
+                                                        <SvgIcon name="plus" size={14} /> 글쓰기
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setIsAdmin(false)}
+                                                        className="px-4 py-2.5 bg-white border border-slate-200 text-slate-500 rounded-xl text-xs font-black hover:bg-slate-50 transition-all"
+                                                    >
+                                                        로그아웃
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {showAdminLogin && !isAdmin && (
+                                    <div className="px-6 md:px-10 pt-6">
+                                        <div className="max-w-5xl mx-auto bg-slate-900 rounded-2xl p-5 md:p-6 text-white">
+                                            <div className="flex flex-col md:flex-row md:items-center gap-3">
+                                                <div className="flex-1 text-left">
+                                                    <p className="text-xs font-black">관리자 인증</p>
+                                                    <p className="text-[11px] text-white/50 mt-1">관리자 PIN을 입력하면 뉴스레터 등록 기능이 열립니다.</p>
+                                                </div>
+                                                <input
+                                                    type="password"
+                                                    inputMode="numeric"
+                                                    value={adminPin}
+                                                    onChange={(e) => setAdminPin(e.target.value)}
+                                                    onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
+                                                    placeholder="PIN"
+                                                    className="w-full md:w-36 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white outline-none focus:border-white/40 font-bold"
+                                                />
+                                                <button
+                                                    onClick={handleAdminLogin}
+                                                    className="px-5 py-3 bg-white text-slate-900 rounded-xl font-black text-xs active:scale-95"
+                                                >
+                                                    로그인
+                                                </button>
+                                                <button
+                                                    onClick={() => { setShowAdminLogin(false); setAdminPin(""); }}
+                                                    className="px-3 py-3 text-white/50 hover:text-white text-xs font-bold"
+                                                >
+                                                    취소
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {isAdmin && showNewsletterForm && (
+                                    <div className="px-6 md:px-10 pt-6">
+                                        <div className="max-w-5xl mx-auto bg-white border border-red-100 rounded-2xl p-5 md:p-6 shadow-sm">
+                                            <div className="text-left mb-5">
+                                                <h3 className="text-sm font-black text-slate-900">뉴스레터 등록</h3>
+                                                <p className="text-[11px] text-slate-400 mt-1">
+                                                    Notion 페이지에서 <b>공유 → 게시(Publish)</b>를 완료한 공개 URL을 붙여 넣어주세요.
+                                                </p>
+                                            </div>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-3">
+                                                <input
+                                                    type="text"
+                                                    value={newNewsletterTitle}
+                                                    onChange={(e) => setNewNewsletterTitle(e.target.value)}
+                                                    placeholder="뉴스레터 제목"
+                                                    className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-red-400 font-bold text-sm"
+                                                />
+                                                <input
+                                                    type="url"
+                                                    value={newNewsletterUrl}
+                                                    onChange={(e) => setNewNewsletterUrl(e.target.value)}
+                                                    placeholder="https://www.notion.so/... 또는 https://workspace.notion.site/..."
+                                                    className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-red-400 font-medium text-sm"
+                                                />
+                                                <button
+                                                    onClick={addNewsletterPost}
+                                                    className="px-5 py-3 bg-[#E51837] text-white rounded-xl font-black text-xs active:scale-95 shadow-sm"
+                                                >
+                                                    등록하기
+                                                </button>
+                                            </div>
+                                            <p className="mt-3 text-[10px] text-slate-400 text-left">
+                                                ※ 이 버전에서는 등록 정보가 현재 브라우저의 localStorage에 저장됩니다. 모든 방문자에게 동일한 목록을 제공하려면 다음 단계에서 서버 DB 연동이 필요합니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="px-6 md:px-10 py-6">
+                                    <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-5">
+                                        <aside className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm h-fit">
+                                            <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                                                <div>
+                                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Archive</p>
+                                                    <h3 className="mt-1 text-sm font-black text-slate-900">게시글 목록</h3>
+                                                </div>
+                                                <button
+                                                    onClick={() => newsletterPosts[0] && setNewsletterEmbedUrl(newsletterPosts[0].url)}
+                                                    className="p-2 rounded-lg hover:bg-slate-50 text-slate-400"
+                                                    title="첫 게시글 보기"
+                                                >
+                                                    <SvgIcon name="refresh" size={15} />
+                                                </button>
+                                            </div>
+
+                                            <div className="max-h-[520px] overflow-y-auto">
+                                                {newsletterPosts.length === 0 ? (
+                                                    <div className="px-5 py-10 text-center">
+                                                        <SvgIcon name="mail" size={28} className="mx-auto text-slate-200 mb-3" />
+                                                        <p className="text-xs font-bold text-slate-400">등록된 뉴스레터가 없습니다.</p>
+                                                        <p className="text-[10px] text-slate-300 mt-1">관리자에서 Notion 글을 등록해 주세요.</p>
+                                                    </div>
+                                                ) : (
+                                                    newsletterPosts.map((post, idx) => (
+                                                        <div
+                                                            key={post.id}
+                                                            className={`border-b last:border-0 border-slate-100 ${newsletterEmbedUrl === post.url ? 'bg-red-50/60' : 'bg-white'}`}
+                                                        >
+                                                            <button
+                                                                onClick={() => openNewsletterPost(post)}
+                                                                className="w-full text-left px-5 py-4 hover:bg-slate-50 transition-all"
+                                                            >
+                                                                <p className={`text-[13px] font-black leading-snug ${newsletterEmbedUrl === post.url ? 'text-[#E51837]' : 'text-slate-800'}`}>
+                                                                    {post.title}
+                                                                </p>
+                                                                <p className="text-[10px] text-slate-400 mt-1">
+                                                                    {new Date(post.createdAt).toLocaleDateString('ko-KR')}
+                                                                </p>
+                                                            </button>
+
+                                                            {isAdmin && (
+                                                                <div className="px-5 pb-3 flex justify-end">
+                                                                    <button
+                                                                        onClick={() => deleteNewsletterPost(post.id)}
+                                                                        className="text-[10px] font-black text-slate-300 hover:text-red-500 transition-colors"
+                                                                    >
+                                                                        삭제
+                                                                    </button>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    ))
+                                                )}
+                                            </div>
+                                        </aside>
+
+                                        <section className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm min-h-[650px]">
+                                            {newsletterEmbedUrl ? (
+                                                <div className="w-full h-[70vh] min-h-[600px] bg-white">
+                                                    <iframe
+                                                        src={newsletterEmbedUrl}
+                                                        title="KPC Notion Newsletter"
+                                                        className="w-full h-full border-0"
+                                                        loading="lazy"
+                                                        referrerPolicy="strict-origin-when-cross-origin"
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <div className="h-full min-h-[650px] flex flex-col items-center justify-center text-center p-8">
+                                                    <div className="w-16 h-16 rounded-2xl bg-red-50 text-[#E51837] flex items-center justify-center mb-5">
+                                                        <SvgIcon name="mail" size={28} />
+                                                    </div>
+                                                    <h3 className="text-lg font-black text-slate-900">뉴스레터를 선택해 주세요.</h3>
+                                                    <p className="text-xs text-slate-400 mt-2 max-w-md">
+                                                        왼쪽 게시글 목록에서 읽고 싶은 뉴스레터를 선택하면 Notion 페이지가 이곳에 표시됩니다.
+                                                    </p>
+                                                    <button
+                                                        onClick={() => setIsAdmin(true)}
+                                                        className="mt-5 text-[11px] font-black text-[#E51837] hover:underline"
+                                                    >
+                                                        관리자 기능
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                    {/* 상세보기 모달 */}
+                    {selectedCourseDetail && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 animate-in">
+                            <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-md font-sans" onClick={() => setSelectedCourseDetail(null)}></div>
+                            <div className="relative bg-white w-full max-w-4xl max-h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col border border-white/10 text-slate-800 text-left text-sm font-sans font-medium text-left">
+                                <div className="p-6 md:p-10 bg-slate-900 text-white text-left font-sans">
+                                    <div className="flex justify-between items-start gap-4 text-left font-sans font-medium">
+                                        <div className="flex-1 space-y-5 text-left font-sans font-black">
+                                            <div className="flex flex-wrap items-center gap-2 font-sans text-[10px] font-black uppercase font-black text-left">
+                                                <span className="px-2 py-0.5 bg-blue-600 rounded shadow-md uppercase text-left">Detail Page</span>
+                                                <span className={`px-2 py-0.5 rounded border ${getCategoryStyle(selectedCourseDetail.category)} border-white/10 text-left`}>{selectedCourseDetail.category}</span>
+                                                {selectedCourseDetail.hours > 0 && <span className="px-2 py-0.5 bg-amber-500 rounded border border-white/10 shadow-md font-sans font-black text-left font-sans">{(selectedCourseDetail.hours).toFixed(1)}H</span>}
+                                            </div>
+                                            <div className="flex flex-col md:flex-row md:items-center gap-4 text-left font-sans font-black leading-tight text-white font-black text-left">
+                                                <h2 className="text-2xl md:text-3xl font-black break-keep flex-1 leading-tight text-left font-sans text-white text-left">{selectedCourseDetail.title}</h2>
+                                                <div className="flex items-center gap-2 shrink-0 text-left">
+                                                    {selectedCourseDetail.sampleLink && (
+                                                        <a 
+                                                            href={selectedCourseDetail.sampleLink} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer" 
+                                                            className="flex items-center gap-1.5 px-6 py-3 bg-white/10 text-white border border-white/20 rounded-xl font-black text-xs hover:bg-white/20 transition-all active:scale-95 shadow-lg"
+                                                        >
+                                                            <SvgIcon name="play" size={14} className="fill-current" /> 맛보기 강의
+                                                        </a>
+                                                    )}
+                                                    <button 
+                                                        onClick={() => {addToCart(selectedCourseDetail); setSelectedCourseDetail(null);}} 
+                                                        disabled={cart.find(c => c.title === selectedCourseDetail.title)} 
+                                                        className={`flex items-center gap-1.5 px-6 py-3 rounded-xl font-black text-xs transition-all active:scale-95 shadow-lg ${cart.find(c => c.title === selectedCourseDetail.title) ? 'bg-white/10 text-slate-400 border border-white/5 cursor-not-allowed font-sans font-black' : 'bg-blue-600 text-white hover:bg-blue-500 font-sans font-black uppercase font-black'}`}
+                                                    >
+                                                        <SvgIcon name={cart.find(c => c.title === selectedCourseDetail.title) ? 'check' : 'layout'} size={14}/> {cart.find(c => c.title === selectedCourseDetail.title) ? 'ADDED' : 'PLANNING'}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button onClick={() => setSelectedCourseDetail(null)} className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white shrink-0 font-sans font-black"><SvgIcon name="x" size={24} /></button>
+                                    </div>
+                                </div>
+                                <div className="flex-1 overflow-y-auto p-6 md:p-10 scrollbar-hide bg-white text-slate-600 text-left font-sans font-medium text-left">
+                                    <div className="space-y-10 font-sans text-left text-slate-700 leading-relaxed font-sans font-black font-black text-left">
+                                        <div className="flex flex-col lg:flex-row gap-10 items-start text-left font-sans font-medium text-slate-700 leading-relaxed font-black text-left"><div className="flex-1 text-left font-sans font-medium text-slate-700 leading-relaxed font-black text-left"><div className="flex items-center gap-1.5 mb-4 text-blue-600 font-black text-[10px] uppercase tracking-widest text-left font-sans font-black"> Course Summary</div><p className="text-[15px] md:text-[16px] border-l-4 border-slate-100 pl-5 break-keep font-bold italic text-left font-sans tracking-tight leading-relaxed font-black text-left">{selectedCourseDetail.intro}</p></div>{selectedCourseDetail.thumbnail && (<div className="w-full lg:w-80 shrink-0 animate-in text-center font-sans font-black text-left"><div className="aspect-video rounded-3xl overflow-hidden shadow-lg border border-slate-100 font-sans bg-slate-50 text-left"><img src={selectedCourseDetail.thumbnail} className="w-full h-full object-cover font-sans text-left" alt={selectedCourseDetail.title} /></div></div>)}</div>
+                                        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left font-sans font-black font-black text-left"><div className="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 shadow-sm text-left font-sans font-black text-left"><div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600 mb-5 font-sans font-black text-left"><SvgIcon name="users" size={20} /></div><h4 className="text-[10px] font-black text-slate-400 uppercase mb-3 tracking-widest font-sans text-left font-black uppercase font-black text-left">학습 대상</h4><p className="text-[13px] md:text-[14px] font-black text-slate-800 leading-relaxed whitespace-pre-line font-sans text-left tracking-tight font-black font-black text-left">{selectedCourseDetail.target}</p></div><div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm text-left font-sans font-black font-sans font-black text-left"><div className="w-8 h-8 bg-white rounded-lg shadow-sm flex items-center justify-center text-indigo-600 mb-4 font-sans font-black font-black text-left"><SvgIcon name="target" size={16} /></div><h4 className="text-[10px] font-black text-slate-400 uppercase mb-2 tracking-widest font-sans text-left font-black font-black font-black text-left">학습 목표</h4><p className="text-[13px] md:text-[14px] font-bold text-slate-800 leading-relaxed whitespace-pre-line font-sans text-left tracking-tight font-black font-black text-left font-sans">{selectedCourseDetail.goal}</p></div></section>
+                                        <section className="bg-slate-900 rounded-3xl p-8 md:p-10 text-white shadow-xl text-left border border-white/5 font-sans font-black uppercase font-black text-left font-sans"><div className="flex items-center gap-2.5 mb-6 text-left font-sans font-bold font-black text-left"><div className="p-2 bg-blue-600 rounded-lg font-sans font-black font-black uppercase tracking-widest font-black text-left"><SvgIcon name="list" size={16} /></div><h4 className="text-base font-black tracking-tight uppercase font-sans text-left text-white font-black font-black font-black font-black text-left">Curriculum</h4></div><div className="text-sm text-slate-300 font-medium leading-relaxed whitespace-pre-line bg-white/5 p-6 rounded-2xl border border-white/5 break-keep font-sans text-left font-sans font-bold font-black font-black font-black text-left">{selectedCourseDetail.content}</div></section>
+                                    </div>
+                                </div>
+                                <div className="p-4 border-t border-slate-100 bg-slate-50 flex justify-center font-sans font-bold text-slate-900 font-black text-left"><button onClick={() => setSelectedCourseDetail(null)} className="px-12 py-4 bg-slate-900 text-white rounded-2xl font-black text-lg active:scale-95 transition-all font-sans uppercase shadow-md font-black tracking-tight font-sans font-black font-black font-black font-black font-black text-left">Close View</button></div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
